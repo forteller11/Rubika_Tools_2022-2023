@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c70165cb6ae4861886979397e4ee0f4, type: 3}
+  m_Name: Links
+  m_EditorClassIdentifier: 
+  Links:
+  - Name: wall_brick
+    Visual: {fileID: 8366290727632321693, guid: c134157be2c1906498b76f979d33ca49, type: 3}
+  - Name: hedge
+    Visual: {fileID: 8366290727632321693, guid: 13a86bfdde361d744b399fe1af41224e, type: 3}
+  - Name: water
+    Visual: {fileID: 8366290727632321693, guid: 791666a27678c2b419023ed5ddf43739, type: 3}
+  - Name: door
+    Visual: {fileID: 8366290727632321693, guid: d974487e2cddb62468474e28a8e3f824, type: 3}
+  - Name: spawn
+    Visual: {fileID: 8366290727632321693, guid: d974487e2cddb62468474e28a8e3f824, type: 3}

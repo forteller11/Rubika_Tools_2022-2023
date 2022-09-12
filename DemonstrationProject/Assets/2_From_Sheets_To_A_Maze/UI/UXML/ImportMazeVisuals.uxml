@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/UI/USS/default.uss?fileID=7433441132597879392&amp;guid=dcd455eeeef3b4a49b6fd0a08eea1fa9&amp;type=3#default" />
+    <ui:VisualElement name="import-visuals" view-data-key="import-visuals" style="margin-left: 4px; margin-right: 4px; margin-top: 0; margin-bottom: 4px;">
+        <Charly.SheetsToMaze.PathPicker path-label="Source Dir" picker-type="Directory" name="picker-src" view-data-key="picker-src" />
+        <Charly.SheetsToMaze.PathPicker path-label="Output Dir" picker-type="Directory" name="picker-dst" view-data-key="picker-dst" />
+        <ui:ProgressBar title="Files To Import: N/A" high-value="1" />
+        <ui:Button text="Update" display-tooltip-when-elided="true" name="import-visuals" />
+        <ui:Label text="Up To Date" display-tooltip-when-elided="true" name="is-up-to-date" style="background-color: rgb(60, 70, 59); margin-left: 4px; margin-right: 4px; margin-top: 1px; margin-bottom: 1px; align-items: center; justify-content: flex-end; -unity-text-align: upper-center; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(39, 51, 38); border-right-color: rgb(39, 51, 38); border-top-color: rgb(39, 51, 38); border-bottom-color: rgb(39, 51, 38); border-top-left-radius: 2px; border-bottom-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; padding-left: 4px; padding-right: 4px; padding-top: 2px; padding-bottom: 2px;" />
+        <ui:VisualElement />
+    </ui:VisualElement>
+</ui:UXML>

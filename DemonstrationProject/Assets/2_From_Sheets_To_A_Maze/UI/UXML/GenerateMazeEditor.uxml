@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:Template name="ImportMazeVisuals" src="project://database/Assets/UI/UXML/ImportMazeVisuals.uxml?fileID=9197481963319205126&amp;guid=ddda048ffe3b71f4ca5e6a75c79ceacd&amp;type=3#GenerateMazeEditor 1" />
+    <Style src="project://database/Assets/UI/USS/default.uss?fileID=7433441132597879392&amp;guid=dcd455eeeef3b4a49b6fd0a08eea1fa9&amp;type=3#default" />
+    <ui:VisualElement style="margin-left: 4px; margin-right: 4px; margin-top: 0; margin-bottom: 4px;" />
+    <ui:VisualElement name="import-ui-container" view-data-key="import-ui-container" style="flex-direction: column; max-width: 600px; border-left-color: rgba(26, 26, 26, 0.42); border-right-color: rgba(26, 26, 26, 0.42); border-top-color: rgba(26, 26, 26, 0.42); border-bottom-color: rgba(26, 26, 26, 0.42); border-left-width: 1px; border-right-width: 1px; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 2px; border-bottom-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; padding-top: 4px;">
+        <ui:Instance template="ImportMazeVisuals" name="import-maze-visuals" view-data-key="import-maze-visuals" />
+        <ui:Slider picking-mode="Ignore" value="-10" high-value="100" show-input-field="false" inverted="false" focusable="false" />
+        <uie:EnumField label="Import From" value="Local" view-data-key="import-from-key" name="import-from" />
+        <Charly.SheetsToMaze.PathPicker name="maze-file-picker" view-data-key="maze-file-picker" path-label="Path" picker-file-type="Maze" picker-extensions="maze,txt,text" picker-title="Choose a Maze File" />
+        <ui:TextField picking-mode="Ignore" label="Url" value="filler text" text="filler text" view-data-key="url" name="url" default-path="ssssss" path-label="File Path" picker-title="Open Maze File" picker-file-type="maze" picker-extensions="txt,text,maze" style="flex-grow: 1;" />
+        <ui:VisualElement name="seperator" default-path="ssdsd" class="separator1" />
+        <uie:ObjectField label="Names To Assets" name="name-to-assets" view-data-key="name-to-assets" />
+        <ui:VisualElement name="seperator" class="separator2" />
+        <ui:VisualElement style="flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 4; flex-shrink: 0;" />
+            <ui:Button text="Generate" display-tooltip-when-elided="true" name="generate" />
+            <ui:Button text="Import" display-tooltip-when-elided="true" name="import-maze" class="side-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="seperator" class="separator2" style="margin-bottom: 0;" />
+        <ui:ScrollView name="maze-deserialized-container" picker-extensions="txt,text,maze" picker-file-type="Maze" path-label="Path To Maze" style="margin-left: 6px; margin-right: 6px; margin-top: 6px; margin-bottom: 6px;" />
+    </ui:VisualElement>
+</ui:UXML>
