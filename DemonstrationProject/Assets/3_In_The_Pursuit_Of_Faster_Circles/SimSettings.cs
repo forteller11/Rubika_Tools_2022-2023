@@ -13,5 +13,7 @@ namespace Charly.PursuitFasterCircles
         public float2 BoundsY;
         public float2 InitRadiusRange;
         public float MinRadiusUntilDestruction;
+        public int2 DebrisOnDestruction;
+        public float2 PercentageRadiusOfDebrisRange;
     }
 }

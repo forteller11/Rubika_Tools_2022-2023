@@ -23,7 +23,6 @@ namespace Charly.PursuitFasterCircles.OOP
             for (int i = 0; i < settings.SpawnNumber; i++)
             {
                 var newCircle = Instantiate(Prefab);
-                _circles.Add(newCircle);
                 newCircle.name = $"OOP Circle [{i}]";
  
                 newCircle.Init(settings, _circles);
@@ -42,8 +41,17 @@ namespace Charly.PursuitFasterCircles.OOP
 }
 
 //todo
-//make more oop (all logic in circle)
-//non oop + parition
-//data oriented (stack)
-//jobified
+//oop:
+//- wrapping
+//- keeping number of circles always the same
+//parition
+//pool
+
+//data oriented CPU
+//cache friendly (structs)
+//BURST compiled
 //threaded
+
+//gpu
+//compute
+//shader (compatabile on mobile and older systems)
