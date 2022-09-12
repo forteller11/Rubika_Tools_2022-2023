@@ -431,7 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Settings:
-    SpawnNumber: 5
+    SpawnNumber: 300
     InitVelocityRange:
       x: 0.1
       y: 1
@@ -444,7 +444,7 @@ MonoBehaviour:
     InitRadiusRange:
       x: 0.2
       y: 0.8
-    MinRadiusUntilDestruction: 0.1
+    MinRadiusUntilDestruction: 0.05
     DebrisOnDestruction:
       x: 1
       y: 4

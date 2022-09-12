@@ -13,12 +13,8 @@ namespace Charly.PursuitFasterCircles.OOP
 
         private List<Circle1> _circles;
 
-        private bool _on;
-
         public void Begin(SimSettings settings)
         {
-            _on = true;
-            
             _circles = new List<Circle1>();
             for (int i = 0; i < settings.SpawnNumber; i++)
             {
@@ -31,11 +27,10 @@ namespace Charly.PursuitFasterCircles.OOP
 
         public void End()
         {
-            _on = false;
             foreach (var circle in _circles)
-                Destroy(circle);
-
-            _circles.Clear();
+                circle.DestroyAndCleanup();
+            
+            _circles.Clear(); //this should be redundant
         }
     }
 }

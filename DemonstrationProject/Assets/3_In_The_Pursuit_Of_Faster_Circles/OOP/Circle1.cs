@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 using Random = UnityEngine.Random;
@@ -27,8 +28,8 @@ namespace Charly.PursuitFasterCircles.OOP
             if (parent == null)
             {
                 Set3DPosition(new Vector2(
-                    Random.Range(_settings.BoundsX.x, _settings.BoundsX.y),
-                    Random.Range(_settings.BoundsY.x, _settings.BoundsY.y)));
+                    Random.Range(_settings.BoundsMin.x, _settings.BoundsMax.x),
+                    Random.Range(_settings.BoundsMin.y, _settings.BoundsMax.y)));
                 _radius = Random.Range(_settings.InitRadiusRange.x, _settings.InitRadiusRange.y);
             }
             else
@@ -38,14 +39,31 @@ namespace Charly.PursuitFasterCircles.OOP
             }
             
             transform.localScale = new Vector3(_radius, _radius, _radius) * 2;
-
+            
+            //destroy self if too small
+            if (_radius < _settings.MinRadiusUntilDestruction)
+                DestroyAndCleanup();
         }
 
         private void Update()
         {
-            if (_radius < _settings.MinRadiusUntilDestruction)
-                DestroyAndCleanup();
+            //replace any destroyed circles
+            while (_allCircles.Count < _settings.SpawnNumber)
+            {
+                var newCircle = Instantiate(this);
+                newCircle.Init(_settings, _allCircles);
+            }
+            
+            //integrate velocity
             var newPos = Get2DPosition() + _velocity * Time.deltaTime;
+            
+            //wrap
+            if (newPos.x > _settings.BoundsMax.x) newPos.x = _settings.BoundsMin.x;
+            else if (newPos.x < _settings.BoundsMin.x) newPos.x = _settings.BoundsMax.x;
+            
+            if (newPos.y > _settings.BoundsMax.y) newPos.y = _settings.BoundsMin.y;
+            else if (newPos.y < _settings.BoundsMin.y) newPos.y = _settings.BoundsMax.y; 
+            
             Set3DPosition(newPos);
         }
 
@@ -72,7 +90,7 @@ namespace Charly.PursuitFasterCircles.OOP
                     Set3DPosition(Get2DPosition());
                 }
                 DestroyAndCleanup();
-                return;
+                break;
             }
         }
 

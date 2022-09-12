@@ -9,8 +9,8 @@ namespace Charly.PursuitFasterCircles
     {
         public int SpawnNumber;
         public float2 InitVelocityRange;
-        public float2 BoundsX;
-        public float2 BoundsY;
+        public float2 BoundsMin;
+        public float2 BoundsMax;
         public float2 InitRadiusRange;
         public float MinRadiusUntilDestruction;
         public int2 DebrisOnDestruction;
