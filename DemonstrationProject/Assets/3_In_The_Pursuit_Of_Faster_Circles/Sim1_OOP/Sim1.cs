@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Unity.Profiling;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Charly.PursuitFasterCircles.OOP
 {
@@ -14,13 +13,14 @@ namespace Charly.PursuitFasterCircles.OOP
     {
         public static readonly ProfilerMarker MarkerSetup = new ProfilerMarker("Charly.PursuitFasterCircles.Sim1.Setup");
         public static readonly ProfilerMarker MarkerUpdate = new ProfilerMarker("Charly.PursuitFasterCircles.Sim1.Update");
-
+        
+        public SimSettingsSO SimSettingsSo;
         public Circle1 Prefab;
-
         private List<Circle1> _circles;
 
-        public void Begin(SimSettings settings)
+        void OnEnable()
         {
+            var settings = SimSettingsSo.Settings;
             using (MarkerSetup.Auto())
             {
                 _circles = new List<Circle1>();
@@ -34,31 +34,15 @@ namespace Charly.PursuitFasterCircles.OOP
             }
         }
 
-        public void End()
+        void OnDisable()
         {
             using (MarkerSetup.Auto())
             {
-                foreach (var circle in _circles)
-                    circle.DestroyAndCleanup();
+                for (int i = _circles.Count -1; i > 0; i--)
+                    _circles[i].DestroyAndCleanup();
 
                 _circles.Clear(); //this should be redundant
             }
         }
     }
 }
-
-//todo
-//oop:
-//- wrapping
-//- keeping number of circles always the same
-//parition
-//pool
-
-//data oriented CPU
-//cache friendly (structs)
-//BURST compiled
-//threaded
-
-//gpu
-//compute
-//shader (compatabile on mobile and older systems)

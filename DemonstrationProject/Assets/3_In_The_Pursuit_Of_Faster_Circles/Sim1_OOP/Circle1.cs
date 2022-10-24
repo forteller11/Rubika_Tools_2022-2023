@@ -87,7 +87,6 @@ namespace Charly.PursuitFasterCircles.OOP
                         continue;
 
                     int children = Random.Range(_settings.DebrisOnDestruction.x, _settings.DebrisOnDestruction.y + 1);
-                    _allCircles.Remove(this);
                     for (int j = 0; j < children; j++)
                     {
                         var child = Instantiate(this);

@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8239861}
   - component: {fileID: 8239862}
+  - component: {fileID: 8239863}
   m_Layer: 0
   m_Name: SimOOP
   m_TagString: Untagged
@@ -162,12 +163,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8239860}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34348ba5abc840f69970ec1ddf1f6858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SimSettingsSo: {fileID: 11400000, guid: cba08d3c3fb3c68418697bc0f563a120, type: 2}
   Prefab: {fileID: 8756829636936890928, guid: 110171ef864419f40991267e14968ce6, type: 3}
+--- !u!114 &8239863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8239860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8f6ae177d146bca8aff49266f65293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SimSettingsSo: {fileID: 11400000, guid: cba08d3c3fb3c68418697bc0f563a120, type: 2}
+  Prefab: {fileID: 3094709038534545138, guid: 143729a38b15d7846882d565f9e38c6b, type: 3}
 --- !u!1 &391746564
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,15 +447,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Settings:
-    SpawnNumber: 300
+    SpawnNumber: 200
     InitVelocityRange:
       x: 0.1
       y: 1
-    BoundsX:
+    BoundsMin:
       x: -5
-      y: 5
-    BoundsY:
-      x: -5
+      y: -5
+    BoundsMax:
+      x: 5
       y: 5
     InitRadiusRange:
       x: 0.2
@@ -451,7 +467,6 @@ MonoBehaviour:
     PercentageRadiusOfDebrisRange:
       x: 0.1
       y: 0.5
-  Sim1: {fileID: 8239862}
 --- !u!4 &1784609744
 Transform:
   m_ObjectHideFlags: 0

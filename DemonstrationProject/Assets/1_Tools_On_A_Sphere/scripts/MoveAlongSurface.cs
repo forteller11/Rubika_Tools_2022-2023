@@ -14,7 +14,7 @@ namespace Charly.ToolsOnASphere
         public const string LayerName = "Props";
 
         //todo allow editing in inspector
-        [HideInInspector] public float DistanceFromSurface;
+        [HideInInspector] [SerializeField] public float DistanceFromSurface;
         [HideInInspector] [SerializeField] public SerialHit LatestHit;
         [SerializeField] public Quaternion NormalToLocal;
 
