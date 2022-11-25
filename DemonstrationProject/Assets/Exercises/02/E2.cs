@@ -19,6 +19,7 @@ namespace Exercises.Class02
     public class E2Editor : Editor
     {
         private bool _showNickname;
+        
         public override void OnInspectorGUI()
         {
             var e2 = (E2) target;
