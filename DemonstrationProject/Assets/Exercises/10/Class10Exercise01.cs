@@ -1,7 +1,6 @@
 using System;
 using UnityEditor;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Class10Exercise01 : EditorWindow
 {
@@ -18,8 +17,8 @@ public class Class10Exercise01 : EditorWindow
     {
         if (texture != null)
         {
-            float aspect = (float) width / height;
-            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.width * aspect), texture);
+            float aspectRatio = (float) width / height;
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.width * aspectRatio), texture);
         }
 
         if (GUILayout.Button("Random"))
@@ -28,11 +27,10 @@ public class Class10Exercise01 : EditorWindow
             var colors = new Color[width * height];
             for (int i = 0; i < colors.Length; i++)
             {
-                colors[i] = Random.ColorHSV();
+                colors[i] = UnityEngine.Random.ColorHSV();
             }
             texture.SetPixels(colors);
             texture.Apply();
-            
         }
     }
 }

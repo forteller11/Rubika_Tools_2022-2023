@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Class10Exercise02 : EditorWindow
 {
-    readonly Rect BOUNDARY = new Rect(0, 0, 1, 1);
+    readonly Rect CURVE_BOUNDARY = new Rect(0, 0, 1, 1);
     
     private int size = 64;
     private AnimationCurve curveR = AnimationCurve.Linear(0,1,1,0);
@@ -23,10 +23,11 @@ public class Class10Exercise02 : EditorWindow
     private void OnGUI()
     {
         #region radius settings
-        size = EditorGUILayout.IntField(new GUIContent("Radius", "In Pixels"), size);
-        curveR = EditorGUILayout.CurveField("Red", curveR, Color.red, BOUNDARY);
-        curveG = EditorGUILayout.CurveField("Green", curveG, Color.green, BOUNDARY);
-        curveB = EditorGUILayout.CurveField("Blue", curveB, Color.blue, BOUNDARY);
+        size = EditorGUILayout.IntField(new GUIContent("Diameter", "In Pixels"), size);
+        const int curveFieldMinHeight = 32;
+        curveR = EditorGUILayout.CurveField("Red", curveR, Color.red, CURVE_BOUNDARY, GUILayout.MinHeight(curveFieldMinHeight));
+        curveG = EditorGUILayout.CurveField("Green", curveG, Color.green, CURVE_BOUNDARY, GUILayout.MinHeight(curveFieldMinHeight));
+        curveB = EditorGUILayout.CurveField("Blue", curveB, Color.blue, CURVE_BOUNDARY, GUILayout.MinHeight(curveFieldMinHeight));
         #endregion
 
         #region picking output paths
@@ -47,7 +48,7 @@ public class Class10Exercise02 : EditorWindow
         GUI.enabled = true;
         #endregion
 
-        #region create and output texture
+        #region generating and saving the texture
         EditorGUILayout.Space();
         if (!GUILayout.Button("Create Radial Texture")) 
             return;
@@ -58,14 +59,14 @@ public class Class10Exercise02 : EditorWindow
         for (int y = 0; y < size; y++)
         for (int x = 0; x < size; x++)
         {
-            var dist = Vector2.Distance(
+            var pixelDistanceFromCenter = Vector2.Distance(
                 new Vector2(x,y), 
                 new Vector2(halfSize, halfSize));
-            float distNormalized = Mathf.Clamp01(dist / halfSize);
+            float pixelDistanceFromCenterNormalized = Mathf.Clamp01(pixelDistanceFromCenter / halfSize);
                 
-            float r = curveR.Evaluate(distNormalized);
-            float g = curveG.Evaluate(distNormalized);
-            float b = curveB.Evaluate(distNormalized);
+            float r = curveR.Evaluate(pixelDistanceFromCenterNormalized);
+            float g = curveG.Evaluate(pixelDistanceFromCenterNormalized);
+            float b = curveB.Evaluate(pixelDistanceFromCenterNormalized);
             var color = new Color(r, g, b);
                 
             int flatIndex = y * size + x;
